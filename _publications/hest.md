@@ -1,5 +1,5 @@
 ---
-title: "Distributed state estimation for a stochastic linear hybrid system over a sensor network"
+title: "Distributed State Estimation for a Stochastic Linear Hybrid System over a Sensor Network"
 collection: publications
 permalink: /publication/hybridOKCF
 date: 2018-03-15
