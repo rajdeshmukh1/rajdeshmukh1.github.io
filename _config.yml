@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Raj Deshmukh"
-  pronouns         : "he/him" # example: "she/her"  
+  pronouns         : # example: "she/her"  
   bio              : "Scene Understanding Engineer at <a style='color: black;' href='https://plus.ai/'>Plus</a>"
   location         : "South Bay Area, California"
   employer         : #"Red Brick University"
