@@ -9,16 +9,14 @@
 btn {
   /* default button */
   display: inline-block;
-  margin-bottom: 0.25em;
-  padding: 0.5em 1em;
+  margin-bottom: 0.1em;
+  padding: 0.1em 0.1em;
   color: #e27d60 !important;
   font-family: $sans-serif;
   font-size: $type-size-6;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  /*background-color: $primary-color;
-  border: 0 !important;*/
   background-color: #fff;
   border: #e27d60;
   border-color: #e27d60;
