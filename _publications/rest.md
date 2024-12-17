@@ -1,6 +1,7 @@
 ---
 title: "Optimal Discrete-time Kalman Consensus Filter"
 collection: publications
+category: manuscripts
 permalink: /publication/OKCF
 date: 2017-05-24
 venue: 'American Control Conference 2017, Seattle, WA'
