@@ -1,6 +1,7 @@
 ---
 title: "Anomaly Detection Using Temporal Logic Based Learning for Terminal Airspace Operations"
 collection: publications
+category: manuscripts
 permalink: /publication/tempAD
 date: 2019-01-07
 venue: 'AIAA SciTech 2019 Forum, San Diego, CA'
