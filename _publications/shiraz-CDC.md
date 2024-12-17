@@ -1,6 +1,7 @@
 ---
 title: "Optimal Kalman Consensus Filter for Weighted Directed Graphs"
 collection: publications
+category: manuscripts
 permalink: /publication/naiveKCF
 date: 2019-12-11
 venue: 'Conference on Decision and Control 2019, Nice, France'
