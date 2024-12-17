@@ -1,6 +1,7 @@
 ---
 title: "Development of Data-Driven Conflict Resolution Generator for En-Route Airspace"
 collection: publications
+category: manuscripts
 permalink: /publication/D2RG
 date: 2021-04-12
 venue: 'Aerospace Science and Technology'
