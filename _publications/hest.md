@@ -1,6 +1,7 @@
 ---
 title: "Distributed State Estimation for a Stochastic Linear Hybrid System over a Sensor Network"
 collection: publications
+category: manuscripts
 permalink: /publication/hybridOKCF
 date: 2018-03-15
 venue: 'IET Control Theory & Applications'
