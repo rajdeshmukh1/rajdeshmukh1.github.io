@@ -177,10 +177,16 @@ li ol {
    ========================================================================== */
 
 /* Figures and images */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
 
 figure {
   display: -webkit-box;
-  display: flex;
+  //display: flex;
+   display: inline-block;
+  text-align: center;
   -webkit-box-pack: justify;
           justify-content: space-between;
   -webkit-box-align: start;
@@ -194,11 +200,18 @@ figure {
     margin-bottom: 1em;
   }
 
+     iframe {
+    vertical-align: middle;
+  }
+
   img {
-    width: 100%;
+    width: 100%;     
+    height: auto;
+    vertical-align: middle;
     border-radius: $border-radius;
     -webkit-transition: $global-transition;
     transition: $global-transition;
+     vertical-align: top;
   }
 
   > a {
