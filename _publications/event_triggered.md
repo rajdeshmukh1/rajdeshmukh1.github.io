@@ -1,6 +1,7 @@
 ---
 title: "Temporal Logic Learning-based Anomaly Detection in Metrolplex Terminal Airspace Operations"
 collection: publications
+category: manuscripts
 permalink: /publication/event_triggered
 date: 2021-03-21
 venue: 'Transportation Research Part C: Emerging Technologies'
