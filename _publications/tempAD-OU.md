@@ -1,6 +1,7 @@
 ---
 title: "Incremental-Learning-Based Unsupervised Anomaly Detection Algorithm for Terminal Airspace Operations"
 collection: publications
+category: manuscripts
 permalink: /publication/TempADOU
 date: 2018-03-15
 venue: 'Journal of Aerospace Information Systems'
