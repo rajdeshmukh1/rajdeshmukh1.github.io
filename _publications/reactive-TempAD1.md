@@ -1,6 +1,7 @@
 ---
 title: "Data-Driven Precursor Detection Algorithm for Terminal Airspace Operations"
 collection: publications
+category: manuscripts
 permalink: /publication/reactiveTempAD1
 date: 2019-06-27
 venue: 'FAA/Eurocontrol ATM Seminar 2019, Vienna, Austria'
