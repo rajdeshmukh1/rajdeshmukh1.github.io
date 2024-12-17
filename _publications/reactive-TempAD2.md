@@ -1,6 +1,7 @@
 ---
 title: "Reactive Temporal Logic-Based Precursor Detection Algorithm for Terminal Airspace Operations"
 collection: publications
+category: manuscripts
 permalink: /publication/reactiveTempAD2
 date: 2020-10-27
 venue: 'Journal of Air Transportation'
