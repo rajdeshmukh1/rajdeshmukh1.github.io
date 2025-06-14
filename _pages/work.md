@@ -5,12 +5,15 @@ permalink: /work/
 author_profile: true
 ---
 
-I have been at Plus since November 2024 as a Scene Understanding software engineer under the umbrella of the Perception team at Santa Clara, California. My primary responsibility involves resarching and executing software solutions that enable a muti-modal, multi-view end-to-end lane tracking models depending on camera, radar, and lidar sensing setups. This often involves a deep-dive into novel algorithms that tackle long-tail of real-world problems in challenging and diverse scenarios to safely enable L4 autonomous driving.
+I have been at Plus since November 2024 as a Scene Understanding Software Engineer under the umbrella of the perception team at Santa Clara, California. My primary responsibility involves resarching and executing software solutions that enable a muti-modal, multi-view end-to-end lane tracking models depending on camera, radar, and lidar sensing setups. This often involves a deep-dive into novel algorithms that tackle long-tail of real-world problems in challenging and diverse scenarios to safely enable L4 autonomous driving.
 
-Effective sensor-agnostic lane tracking which relies on deep learning techniques enables unparalleled scalability across diverse driving scenarios, thereby supporting Plus's <a href="https://plus.ai/solutions/superdrive" title="SuperDrive">driverless</a> systems being tested across the world.
+Effective sensor-agnostic lane perception which relies on deep learning techniques enables unparalleled scalability across diverse driving scenarios, thereby supporting Plus's <a href="https://plus.ai/solutions/superdrive" title="SuperDrive">driverless</a> systems being tested across the world.
 
 <!---<img src="/images/auto_labeling_demo_video_v2.gif" alt="Lane Detection and Tracking." style="width:100%">--->
-<img src="/images/plusplayl4.gif" alt="Lane Detection and Tracking." style="width:100%">
+<figure>
+  <img src="/images/plusplayl4.gif" alt="Distributed Hybrid State Estimator" style="width:60%">
+  <figcaption>Lane Detection and Tracking.</figcaption>
+</figure>
 
 Prior to my start at Plus, I was at Aptiv as an Object Tracking Developer at Troy, Michigan. My technical contributions there involved crafting software solutions that facilitate downstream threat assessment algorithms, ensuring dependable multi-modal sensor fusion.
 
@@ -18,5 +21,9 @@ Sensor fusion is the ability to amalgamate inputs from several radars, lidars, a
 
 This outcome is subsequently employed to bolster intelligent active driver assistance systems, such as adaptive cruise control, automatic lane-change, pre-collision warning and braking, among others. These advancements aim to reduce driver involvement and pave the way toward greater autonomy.
 
- <img src="/images/aptiv-solution.jpg" alt="Automotive Sensing and Perception." style="width:100%">
+<figure>
+  <img src="/images/aptiv-solution.jpg" alt="Distributed Hybrid State Estimator" style="width:60%">
+  <figcaption>Automotive Sensing and Perception.</figcaption>
+</figure>
+
 {% include base_path %}
