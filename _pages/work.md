@@ -9,7 +9,8 @@ I have been at Plus since November 2024 as a Scene Understanding software engine
 
 Effective sensor-agnostic lane tracking which relies on deep learning techniques enables unparalleled scalability across diverse driving scenarios, thereby supporting Plus's <a href="https://plus.ai/solutions/superdrive" title="SuperDrive">driverless</a> systems being tested across the world.
 
-<img src="/images/auto_labeling_demo_video_v2.gif" alt="Lane Detection and Tracking." style="width:100%">
+<!---<img src="/images/auto_labeling_demo_video_v2.gif" alt="Lane Detection and Tracking." style="width:100%">--->
+<img src="/images/plusplayl4.gif" alt="Lane Detection and Tracking." style="width:100%">
 
 Prior to my start at Plus, I was at Aptiv as an Object Tracking Developer at Troy, Michigan. My technical contributions there involved crafting software solutions that facilitate downstream threat assessment algorithms, ensuring dependable multi-modal sensor fusion.
 
