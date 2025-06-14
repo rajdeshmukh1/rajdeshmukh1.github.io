@@ -10,10 +10,8 @@ I have been at Plus since November 2024 as a Scene Understanding Software Engine
 Effective sensor-agnostic lane perception which relies on deep learning techniques enables unparalleled scalability across diverse driving scenarios, thereby supporting Plus's <a href="https://plus.ai/solutions/superdrive" title="SuperDrive">driverless</a> systems being tested across the world.
 
 <!---<img src="/images/auto_labeling_demo_video_v2.gif" alt="Lane Detection and Tracking." style="width:100%">--->
-<figure>
-  <img src="/images/plusplayl4.gif" alt="Distributed Hybrid State Estimator" style="width:60%">
-  <figcaption>Lane Detection and Tracking.</figcaption>
-</figure>
+
+<img src="/images/plusplayl4.gif" alt="Lane Detection and Tracking." style="width:60%">
 
 Prior to my start at Plus, I was at Aptiv as an Object Tracking Developer at Troy, Michigan. My technical contributions there involved crafting software solutions that facilitate downstream threat assessment algorithms, ensuring dependable multi-modal sensor fusion.
 
@@ -21,9 +19,6 @@ Sensor fusion is the ability to amalgamate inputs from several radars, lidars, a
 
 This outcome is subsequently employed to bolster intelligent active driver assistance systems, such as adaptive cruise control, automatic lane-change, pre-collision warning and braking, among others. These advancements aim to reduce driver involvement and pave the way toward greater autonomy.
 
-<figure>
-  <img src="/images/aptiv-solution.jpg" alt="Distributed Hybrid State Estimator" style="width:60%">
-  <figcaption>Automotive Sensing and Perception.</figcaption>
-</figure>
+<img src="/images/aptiv-solution.jpg" alt="Automotive Sensing and Perception." style="width:60%">
 
 {% include base_path %}
