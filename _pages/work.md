@@ -11,7 +11,7 @@ Effective sensor-agnostic lane perception which relies on deep learning techniqu
 
 <!---<img src="/images/auto_labeling_demo_video_v2.gif" alt="Lane Detection and Tracking." style="width:100%">--->
 
-<img src="/images/plusplayl4.gif" alt="Lane Detection and Tracking." style="width:60%">
+<img src="/images/plusplayl4.gif" alt="Lane Detection and Tracking." style="width:60%" class="center">
 
 Prior to my start at Plus, I was at Aptiv as an Object Tracking Developer at Troy, Michigan. My technical contributions there involved crafting software solutions that facilitate downstream threat assessment algorithms, ensuring dependable multi-modal sensor fusion.
 
@@ -19,6 +19,6 @@ Sensor fusion is the ability to amalgamate inputs from several radars, lidars, a
 
 This outcome is subsequently employed to bolster intelligent active driver assistance systems, such as adaptive cruise control, automatic lane-change, pre-collision warning and braking, among others. These advancements aim to reduce driver involvement and pave the way toward greater autonomy.
 
-<img src="/images/aptiv-solution.jpg" alt="Automotive Sensing and Perception." style="width:60%">
+<img src="/images/aptiv-solution.jpg" alt="Automotive Sensing and Perception." style="width:60%" class="center">
 
 {% include base_path %}
