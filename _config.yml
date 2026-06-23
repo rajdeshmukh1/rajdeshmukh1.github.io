@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Raj Deshmukh"
 title_separator          : "-"
 name                     : &name "Raj Deshmukh"
-description              : &description "personal description"
+description              : &description "Raj Deshmukh is a Scene Understanding Engineer at PlusAI working on perception and lane detection for L4 autonomous driving. Ph.D. in aerospace engineering with research in distributed state estimation and applied machine learning."
 url                      : https://rajdeshmukh1.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "rajdeshmukh1/rajdeshmukh1.github.io"
@@ -24,8 +24,8 @@ author:
   avatar           : "profile.jpg"
   name             : "Raj Deshmukh"
   pronouns         : # example: "she/her"  
-  bio              : "Scene Understanding Engineer at <a style='color: black;' href='https://plus.ai/'>PlusAI</a>"
-  location         : "South Bay Area, California"
+  bio              : "Scene Understanding Engineer at <a href='https://plus.ai/'>PlusAI</a>"
+  location         : "SF Bay Area, California"
   employer         : #"Red Brick University"
   uri              : # URL
   email            : "rajdeshmukh1@outlook.com" 
@@ -135,13 +135,17 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "og-image.png"  # Open Graph/Twitter default share image (in /images/)
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
+  type                   : Person
+  name                   : Raj Deshmukh
   links: # An array of links to social media profiles
+    - "https://www.linkedin.com/in/rajdeshmukh"
+    - "https://github.com/rajdeshmukh1"
+    - "https://scholar.google.com/citations?user=vxDZIloAAAAJ&hl=en"
+    - "https://orcid.org/0000-0001-8163-2509"
 
 
 # Analytics
@@ -212,33 +216,13 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
   publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
     output: true
     permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: ""
@@ -246,15 +230,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
   # _publications
   - scope:
       path: ""
@@ -262,25 +237,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
 
 
 # Sass/SCSS
@@ -299,8 +255,6 @@ timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database
 # Plugins
 plugins:
   - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
@@ -308,8 +262,6 @@ plugins:
 # Mimic GitHub Pages with --safe
 whitelist:
   - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji

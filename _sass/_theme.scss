@@ -1,0 +1,746 @@
+/* ==========================================================================
+   THEME LAYER  —  indigo accent, light + dark mode, polish
+   Loaded last so it overrides the template's compile-time color values.
+   Colors are driven by CSS custom properties switched via html[data-theme].
+   ========================================================================== */
+
+:root,
+html[data-theme="light"] {
+  --bg            : #ffffff;
+  --bg-soft       : #f7f8fa;
+  --surface       : #ffffff;
+  --surface-2     : #f4f5f7;
+  --text          : #1f2328;
+  --text-muted    : #57606a;
+  --heading       : #14171c;
+  --border        : #e6e8ec;
+  --border-strong : #d3d7de;
+  --link          : #8c2d1f;
+  --link-hover    : #6e2014;
+  --accent        : #9a3324;   /* mahogany — matches the CV */
+  --accent-2      : #b14332;
+  --accent-contrast: #ffffff;
+  --accent-soft   : rgba(154, 51, 36, 0.10);
+  --accent-ring   : rgba(154, 51, 36, 0.22);
+  --code-bg       : #f3f4f6;
+  --masthead-bg   : rgba(255, 255, 255, 0.82);
+  --shadow        : 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --shadow-hover  : 0 4px 10px rgba(16, 24, 40, 0.10), 0 18px 40px rgba(16, 24, 40, 0.12);
+}
+
+html[data-theme="dark"] {
+  --bg            : #0f1117;
+  --bg-soft       : #141823;
+  --surface       : #161a23;
+  --surface-2     : #1b2030;
+  --text          : #e6e8eb;
+  --text-muted    : #9aa4b2;
+  --heading       : #f3f5f8;
+  --border        : #272d3a;
+  --border-strong : #333b4d;
+  --link          : #e89b85;
+  --link-hover    : #f2bba9;
+  --accent        : #c75d48;   /* lightened mahogany / clay for dark-mode legibility */
+  --accent-2      : #a8412f;
+  --accent-contrast: #ffffff;
+  --accent-soft   : rgba(199, 93, 72, 0.16);
+  --accent-ring   : rgba(199, 93, 72, 0.30);
+  --code-bg       : #1b2030;
+  --masthead-bg   : rgba(15, 17, 23, 0.80);
+  --shadow        : 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.40);
+  --shadow-hover  : 0 6px 16px rgba(0, 0, 0, 0.45), 0 20px 44px rgba(0, 0, 0, 0.55);
+}
+
+/* Smooth, restrained theme-switch transition */
+html { background-color: var(--bg); }
+body,
+.masthead,
+.page__footer,
+.greedy-nav .hidden-links,
+.author__urls,
+.btn,
+btn,
+blockquote,
+hr {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*
+   Base surfaces & typography
+   ========================================================================== */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "ss01";
+}
+
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.archive__item-title {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--heading);
+  letter-spacing: -0.012em;
+}
+
+.page__title { font-weight: 800; }
+
+a {
+  color: var(--link);
+}
+a:hover { color: var(--link-hover); }
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+hr { border-top-color: var(--border); }
+
+blockquote {
+  border-left-color: var(--accent);
+  color: var(--text-muted);
+}
+
+/* Inline code */
+p > code, a > code, li > code, figcaption > code, td > code,
+tt, code, kbd, samp {
+  background: var(--code-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+pre, .highlight { background: var(--code-bg); color: var(--text); }
+
+/* Content links keep the underline but pick up the accent */
+.page__content a:not(.btn),
+.archive a {
+  color: var(--link);
+  text-decoration-color: var(--accent-ring);
+  text-underline-offset: 0.15em;
+}
+.page__content a:not(.btn):hover,
+.archive a:hover { color: var(--link-hover); }
+
+.page__content h2 { border-bottom-color: var(--border); }
+
+/* Research "read more" prose — real paragraph rhythm + comfortable line-height
+   (replaces the old <br><br> walls of text; full content width as before) */
+.research-prose p {
+  margin: 0 0 1.05em;
+  line-height: 1.75;
+}
+.research-prose p:last-child { margin-bottom: 0; }
+.research-prose figure,
+.research-prose .flex-container { margin-top: 1.4em; }
+
+figcaption { color: var(--text-muted); }
+figcaption a:hover { color: var(--text); border-bottom-color: var(--text); }
+
+.archive__subtitle { color: var(--text-muted); border-bottom-color: var(--border); }
+.page__meta, .page__date { color: var(--text-muted); }
+
+/*
+   Masthead (frosted, sticky)
+   ========================================================================== */
+
+.masthead {
+  background: var(--masthead-bg);
+  border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+          backdrop-filter: saturate(180%) blur(12px);
+}
+
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.masthead__menu { flex: 1 1 auto; min-width: 0; }
+
+.greedy-nav { background: transparent; }
+
+.greedy-nav a { color: var(--text-muted); font-weight: 500; }
+.greedy-nav .visible-links a:hover { color: var(--accent); }
+
+/* site title (first item) */
+.greedy-nav .visible-links li:first-child a,
+.masthead__menu-item--lg a {
+  color: var(--heading);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* animated underline uses the accent */
+.greedy-nav .visible-links a:before { background: var(--accent); height: 2px; }
+
+/* hamburger + overflow dropdown */
+.greedy-nav button { background-color: var(--accent); border-radius: 6px; }
+.greedy-nav .hidden-links {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-hover);
+}
+.greedy-nav .hidden-links a { color: var(--text); }
+.greedy-nav .hidden-links a:hover { color: var(--accent); background: var(--accent-soft); }
+.greedy-nav .hidden-links:before { border-color: var(--border) transparent; }
+.greedy-nav .hidden-links:after { border-color: var(--surface) transparent; }
+.greedy-nav .hidden-links li { border-bottom-color: var(--border); }
+
+/*
+   Theme toggle button
+   ========================================================================== */
+
+.theme-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+          appearance: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+.theme-toggle .theme-toggle__sun  { display: none; }
+.theme-toggle .theme-toggle__moon { display: block; }
+html[data-theme="dark"] .theme-toggle .theme-toggle__sun  { display: block; }
+html[data-theme="dark"] .theme-toggle .theme-toggle__moon { display: none; }
+
+/*
+   Sidebar / author profile
+   ========================================================================== */
+
+/* Ring is drawn as a border + padding gap (inside the box) rather than an outset
+   box-shadow, so the fixed sidebar's overflow clipping can't crop its left edge. */
+.author__avatar img {
+  padding: 4px;
+  background: var(--surface);
+  border: 2px solid var(--accent-ring) !important;
+  border-radius: 50%;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.author__avatar img:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.author__name { color: var(--heading); }
+.author__bio { color: var(--text-muted); }
+.sidebar .author__urls li,
+.author__urls a { color: var(--text); }
+.author__urls a:hover { color: var(--accent); }
+.author__urls .fa-location-dot,
+.author__urls .fa-building-columns { color: var(--accent); }
+
+/* mobile "Follow" dropdown — keep the floating box scoped to small screens
+   (on desktop the list is inline/transparent, so don't paint a surface box) */
+@media screen and (max-width: 924px) {
+  .author__urls {
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow: var(--shadow-hover);
+  }
+  .author__urls:before { border-color: var(--border) transparent; }
+  .author__urls:after  { border-color: var(--surface) transparent; }
+}
+
+/* social icons in the sidebar: subtle accent on hover */
+.author__urls.social-icons a:hover i { color: var(--accent); }
+
+/* GitHub's brand color is near-black, so it vanishes on a dark background.
+   Force the GitHub mark (sidebar + footer) to follow the readable text color in dark mode. */
+html[data-theme="dark"] .social-icons .fa-github,
+html[data-theme="dark"] .social-icons .fa-github-alt,
+html[data-theme="dark"] .social-icons .fa-github-square { color: var(--text); }
+
+/*
+   Buttons (indigo)
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.55em 1.1em;
+  color: var(--accent-contrast) !important;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  font-weight: 600;
+  text-decoration: none !important;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn:hover {
+  background: var(--link-hover);
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* "Follow" / inverse button used by the author dropdown toggle */
+.btn--inverse {
+  color: var(--text) !important;
+  background: transparent;
+  border: 1px solid var(--border-strong) !important;
+}
+.btn--inverse:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background: var(--accent-soft);
+}
+
+/* inline "Read more +" toggles in the research page */
+btn {
+  color: var(--accent) !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-weight: 600;
+  padding: 0.1em 0;
+  cursor: pointer;
+}
+btn:hover { color: var(--link-hover) !important; background: transparent !important; }
+
+/*
+   Footer
+   ========================================================================== */
+
+.page__footer {
+  background-color: var(--surface-2);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+.page__footer a { color: var(--text-muted); }
+.page__footer a:hover { color: var(--accent); }
+.page__footer .fas,
+.page__footer .fab,
+.page__footer .far,
+.page__footer .fal { color: var(--text-muted); }
+
+/*
+   Tables
+   ========================================================================== */
+
+table { color: var(--text); }
+th { background: var(--surface-2); border-color: var(--border-strong); color: var(--heading); }
+td { border-color: var(--border); }
+tr { border-bottom-color: var(--border); }
+
+/*
+   Scroll-reveal animation (progressive enhancement)
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+html { scroll-behavior: smooth; }
+
+/*
+   Home page intro + section cards
+   ========================================================================== */
+
+.intro-lead {
+  font-size: 1.18em;
+  line-height: 1.6;
+  color: var(--text);
+}
+.intro-lead strong { color: var(--heading); }
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;        /* all cards share the tallest height -> aligned */
+  gap: 1rem;
+  margin: 1.75em 0;
+  padding: 0;
+  list-style: none;
+}
+.home-cards > li { display: flex; }   /* let each card stretch to the row height */
+
+@media screen and (max-width: 560px) {
+  .home-cards { grid-template-columns: 1fr; grid-auto-rows: auto; }
+}
+
+.home-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 1.15rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.home-card:before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.home-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+  color: var(--text) !important;
+}
+.home-card:hover:before { opacity: 1; }
+
+.home-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 0.6rem;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+.home-card__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+.home-card__desc {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* a soft accent rule used between home sections */
+.rule-soft {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+  margin: 2em 0;
+}
+
+/*
+   Content media — center images, figures, and embeds
+   ========================================================================== */
+
+/* These rules must cover BOTH layouts: `single` wraps content in
+   .page__content, while `archive` (work / research / publications / cv) uses .archive */
+.page__content img.center,
+.archive img.center {
+  display: block;
+  width: 100%;
+  max-width: 720px;   /* uniform width for the work-page figures, centered */
+  margin: 1.5em auto;
+  height: auto;
+}
+.page__content figure,
+.archive figure {
+  display: block;
+  margin: 2em auto;
+  text-align: center;
+}
+.page__content .flex-container,
+.archive .flex-container {
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.page__content iframe,
+.archive iframe {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 100%;
+}
+
+/*
+   Publications — year timeline of cards
+   ========================================================================== */
+
+.pub-scholar {
+  margin: 0 0 1.75em;
+  padding: 0.8em 1.1em;
+  background: var(--accent-soft);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+.pub-scholar a { font-weight: 600; }
+
+.pub-timeline {
+  position: relative;
+  margin: 1.5em 0 0.5em;
+}
+.pub-timeline:before {
+  content: "";
+  position: absolute;
+  left: 4rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.pub-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.pub-card__rail {
+  text-align: right;
+  padding-right: 1.15rem;
+  padding-top: 0.15rem;
+}
+.pub-card__rail:before {
+  content: "";
+  position: absolute;
+  left: 4rem;
+  top: 0.5rem;
+  width: 11px;
+  height: 11px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+  z-index: 1;
+}
+.pub-card__year {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.pub-card__body {
+  padding: 1.05rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.pub-card__body:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.pub-card__title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
+.pub-card__title a { color: var(--heading); text-decoration: none; }
+.pub-card__title a:hover { color: var(--accent); }
+
+.pub-card__venue { margin: 0 0 0.5rem; font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+.pub-card__cite { margin: 0 0 0.9rem; font-size: 0.82rem; line-height: 1.55; color: var(--text-muted); }
+.pub-card__cite i { color: var(--text); font-style: italic; }
+
+.pub-card__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-contrast) !important;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pub-btn:hover { background: var(--link-hover); transform: translateY(-1px); box-shadow: var(--shadow); color: #fff !important; }
+.pub-btn--ghost { color: var(--accent) !important; background: transparent; }
+.pub-btn--ghost:hover { background: var(--accent-soft); color: var(--accent) !important; }
+
+@media screen and (max-width: 560px) {
+  .pub-timeline:before { display: none; }
+  .pub-card { grid-template-columns: 1fr; gap: 0.35rem; margin-bottom: 1.4rem; }
+  .pub-card__rail { text-align: left; padding: 0; }
+  .pub-card__rail:before { display: none; }
+}
+
+/*
+   CV — inline PDF viewer
+   ========================================================================== */
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.25em;
+}
+
+.pdf-embed {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  min-height: 480px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+}
+.pdf-embed object,
+.pdf-embed iframe {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  display: block;
+}
+.pdf-embed__fallback {
+  padding: 2em 1.5em;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/*
+   IMM estimator widget (Research page) — radar tracking a maneuvering aircraft
+   ========================================================================== */
+
+.imm-widget {
+  margin: 1.75em auto 2.25em;
+  padding: 0.6rem 0.95rem 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.imm-widget canvas {
+  display: block;
+  width: 100%;
+  height: 340px;
+  background: #0b0e16;
+  border-radius: 8px;
+}
+.imm-widget__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.2rem;
+  margin-top: 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.imm-widget__modes { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem; }
+.imm-widget__lbl { font-weight: 600; color: var(--text); }
+.imm-widget__modes label { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+.imm-widget__modes input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+.imm-widget__noise { display: inline-flex; align-items: center; gap: 0.4rem; }
+.imm-widget__noise input[type="range"] { accent-color: var(--accent); cursor: pointer; max-width: 96px; }
+.imm-widget__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.6rem; }
+.imm-widget__chips::before { content: "Blind a sensor:"; font: 600 0.74rem/1 Inter, system-ui, sans-serif; color: var(--text); margin-right: 0.15rem; }
+.imm-chip {
+  font: 600 0.72rem Inter, system-ui, sans-serif;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.imm-chip:hover { border-color: var(--accent-ring); color: var(--text); }
+.imm-chip--naive { background: var(--accent); border-color: var(--accent); color: #fff; }
+.imm-widget figcaption { margin-top: 0.65rem; text-align: left; font-size: 0.8rem; line-height: 1.55; color: var(--text-muted); }
+.imm-widget figcaption strong { color: var(--text); }
+
+@media screen and (max-width: 600px) {
+  .imm-widget canvas { height: 300px; }
+}
+
+/* ==========================================================================
+   Perception widget (Work page) — forward camera ‖ bird's-eye, lane + object
+   ========================================================================== */
+.lane-widget {
+  margin: 1.75em auto 2.25em;
+  padding: 0.6rem 0.95rem 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.lane-widget canvas { display: block; width: 100%; height: 380px; background: #0b0e16; border-radius: 8px; }
+.lane-widget__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.1rem; margin-top: 0.65rem; font-size: 0.78rem; color: var(--text-muted); }
+.lane-widget__modes { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem; }
+.lane-widget__lbl { font-weight: 600; color: var(--text); }
+.lane-widget__modes label { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+.lane-widget__modes input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+.lane-widget__noise { display: inline-flex; align-items: center; gap: 0.4rem; }
+.lane-widget__noise input[type="range"] { accent-color: var(--accent); cursor: pointer; max-width: 104px; }
+.lane-widget__btns { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+.lane-btn { font: 600 0.72rem Inter, system-ui, sans-serif; padding: 0.18rem 0.55rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+.lane-btn:hover { border-color: var(--accent-ring); color: var(--text); }
+.lane-btn--off { background: var(--accent); border-color: var(--accent); color: #fff; }
+.lane-widget figcaption { margin-top: 0.65rem; text-align: left; font-size: 0.8rem; line-height: 1.55; color: var(--text-muted); }
+.lane-widget figcaption strong { color: var(--text); }
+
+@media screen and (max-width: 600px) {
+  .lane-widget canvas { height: 300px; }
+}
+
+/*
+   ATM anomaly-monitor widget (Research page) — LGA approach bounds
+   ========================================================================== */
+
+.atc-widget {
+  margin: 1.75em auto 2.25em;
+  padding: 0.6rem 0.95rem 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.atc-widget canvas { display: block; width: 100%; aspect-ratio: 874 / 485; background: #0b0e16; border-radius: 8px; }
+.atc-widget__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.9rem; margin-top: 0.65rem; font-size: 0.78rem; color: var(--text-muted); }
+.atc-widget__lbl { font-weight: 600; color: var(--text); }
+.atc-widget__controls label { display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+.atc-widget__controls input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+.atc-widget__verdict { margin: 0.6rem 0 0; font-size: 0.82rem; line-height: 1.5; color: var(--text-muted); min-height: 3em; }
+.atc-widget__scrub { display: block; width: 100%; margin: 0.3rem 0 0; accent-color: var(--accent); cursor: pointer; opacity: 0.55; transition: opacity 0.15s ease; height: 4px; }
+.atc-widget__scrub:hover, .atc-widget__scrub:active { opacity: 1; }
+.atc-badge { display: inline-block; padding: 0.12em 0.5em; border-radius: 6px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.03em; margin-right: 0.45rem; vertical-align: 1px; }
+.atc-badge--ok { background: #2e9e5b; color: #fff; }
+.atc-badge--bad { background: #ef5350; color: #fff; }
+.atc-badge--mon { background: rgba(46,158,91,0.18); color: #2e9e5b; }
+.atc-badge--pre { background: #e0a23a; color: #20160a; }
+.atc-widget figcaption { margin-top: 0.65rem; text-align: left; font-size: 0.8rem; line-height: 1.55; color: var(--text-muted); }
+.atc-widget figcaption strong { color: var(--text); }

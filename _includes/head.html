@@ -15,6 +15,22 @@
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 
+<!-- Set color theme before paint to avoid a flash of the wrong theme -->
+<script>
+  /* NOTE: no // line comments inside this inline script — HTML compression
+     strips newlines, which would turn a // comment into a kill switch for the
+     rest of the script. Use block comments only. */
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    if (!stored) {
+      var m = document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);
+      if (m) { stored = m[1]; }
+    }
+    document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
+  })();
+</script>
+
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
 

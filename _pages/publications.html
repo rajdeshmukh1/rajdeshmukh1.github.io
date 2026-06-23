@@ -3,34 +3,33 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: true
+description: "Peer-reviewed journal and conference publications by Raj Deshmukh on distributed estimation, sensor networks, and anomaly detection."
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+  <p class="pub-scholar">You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.</p>
 {% endif %}
 
-{% include base_path %}
-
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
+{% assign pubs = site.publications | sort: 'date' | reverse %}
+<div class="pub-timeline">
+  {% for post in pubs %}
+  <article class="pub-card">
+    <div class="pub-card__rail">
+      <span class="pub-card__year">{{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+    </div>
+    <div class="pub-card__body">
+      <h3 class="pub-card__title">
+        {% if post.paperurl %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}
+      </h3>
+      {% if post.venue %}<p class="pub-card__venue">{{ post.venue }}</p>{% endif %}
+      {% if post.citation %}<p class="pub-card__cite">{{ post.citation }}</p>{% endif %}
+      {% if post.paperurl or post.slidesurl %}
+      <div class="pub-card__actions">
+        {% if post.paperurl %}<a class="pub-btn" href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Paper</a>{% endif %}
+        {% if post.slidesurl %}<a class="pub-btn pub-btn--ghost" href="{{ post.slidesurl }}" target="_blank" rel="noopener"><i class="fas fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      </div>
       {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
+    </div>
+  </article>
   {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
-
-
+</div>
